@@ -1,22 +1,26 @@
 import pygame
 
 from game_config import GameConfig
+from background import Background
 
 
 class Screen(object):
     '''
     The game's main screen.
     '''
-    def __init__(self):
+    def __init__(self, width, height, caption):
         '''
         Constructor.
+        @param width the screen's width.
+        @param height the screen's height.
+        @param caption the screen's caption.
         '''
         super(Screen, self).__init__()
-        width, height, caption = self.__get_screen_config()
-        # nota: self.__screen es una instancia de la clase pygame.Surface
+        # note: self.__screen is a pygame.Surface instance
         self.__screen = pygame.display.set_mode((width, height))
+        self.__background = Background(width, height)
         pygame.display.set_caption(caption)
-        self.__visible_objs = []
+        self.__visible_objs = [self.__background]
 
     def clear(self):
         '''
@@ -46,14 +50,3 @@ class Screen(object):
         @return None.
         '''
         pygame.display.flip()
-
-    def __get_screen_config(self):
-        '''
-        Gets the screen configurable options.
-        @return tuple with (width, height, caption).
-        '''
-        config = GameConfig()
-        width = int(config.get('screen', 'width'))
-        height = int(config.get('screen', 'height'))
-        caption = config.get('screen', 'caption')
-        return width, height, caption
