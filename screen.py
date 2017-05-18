@@ -20,7 +20,7 @@ class Screen(object):
         # note: self.__screen is a pygame.Surface instance
         self.__screen = pygame.display.set_mode((width, height))
         self.__background = Background(width, height)
-        self.__floor = Floor(width, height/4, x = 0, y = height*3/4)
+        self.__floor = Floor(width, height/4, x=0, y=height*3/4)
         pygame.display.set_caption(caption)
         self.__visible_objs = [self.__background, self.__floor]
 

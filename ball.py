@@ -15,6 +15,6 @@ class Ball(pygame.sprite.Sprite):
         super(Ball, self).__init__()
         self.radius = radius
         self.color = (0, 0, 255)
-        self.image = pygame.Surface([2*radius, 2*radius])
+        self.image = pygame.Surface([2*radius, 2*radius], pygame.SRCALPHA, 32)
         pygame.draw.circle(self.image, self.color, (radius, radius), radius)
         self.rect = self.image.get_rect()
