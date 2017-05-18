@@ -20,7 +20,7 @@ class EventHandler(object):
         self.__screen.register_visible_object(player)
         self.__controllers = [FirstPlayerController(player)]
 
-    def handle_events(self, screen):
+    def handle_events(self):
         '''
         Handles the new events until the game is quit, updating
         the changes in the screen.
@@ -37,8 +37,8 @@ class EventHandler(object):
                 controller.take_action(keys)
 
             # Clear the screen
-            screen.clear()
+            self.__screen.clear()
             # Update the objects
-            screen.update_objects()
+            self.__screen.update_objects()
             # Show the updated objects
-            screen.flip()
+            self.__screen.flip()

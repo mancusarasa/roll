@@ -24,7 +24,7 @@ class Game(object):
         @return None
         '''
         pygame.init()
-        self.__handler.handle_events(self.__screen)
+        self.__handler.handle_events()
         sys.exit(0)
 
     def __get_screen_config(self):
