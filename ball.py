@@ -18,17 +18,3 @@ class Ball(pygame.sprite.Sprite):
         self.image = pygame.Surface([2*radius, 2*radius])
         pygame.draw.circle(self.image, self.color, (radius, radius), radius)
         self.rect = self.image.get_rect()
-
-    def move_right(self):
-        '''
-        Moves the ball to the right
-        @return None
-        '''
-        self.rect.x += 1
-
-    def move_left(self):
-        '''
-        Moves the ball to the left.
-        @return None
-        '''
-        self.rect.x -= 1

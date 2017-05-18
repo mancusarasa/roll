@@ -8,19 +8,19 @@ class EventHandler(object):
     '''
     Handles all the events of the game.
     '''
-    def __init__(self, screen, player):
+    def __init__(self, screen, player_one):
         '''
         Class constructor.
         @param screen.
-        @param player.
+        @param player_one first player.
         '''
         super(EventHandler, self).__init__()
         self.__clock = pygame.time.Clock()
         self.__screen = screen
-        self.__screen.register_visible_object(player)
-        self.__controllers = [FirstPlayerController(player)]
+        self.__screen.register_visible_object(player_one.ball)
+        self.__controllers = [FirstPlayerController(player_one)]
 
-    def handle_events(self):
+    def main_loop(self):
         '''
         Handles the new events until the game is quit, updating
         the changes in the screen.

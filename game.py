@@ -1,10 +1,9 @@
 import pygame
-import sys
 
 from screen import Screen
 from game_config import GameConfig
 from event_handler import EventHandler
-from ball import Ball
+from players import FirstPlayer
 
 
 class Game(object):
@@ -15,7 +14,7 @@ class Game(object):
         super(Game, self).__init__()
         width, height, caption = self.__get_screen_config()
         self.__screen = Screen(width, height, caption)
-        self.__player = Ball(10)
+        self.__player = FirstPlayer()
         self.__handler = EventHandler(self.__screen, self.__player)
 
     def Run(self):
@@ -24,8 +23,7 @@ class Game(object):
         @return None
         '''
         pygame.init()
-        self.__handler.handle_events()
-        sys.exit(0)
+        self.__handler.main_loop()
 
     def __get_screen_config(self):
         '''

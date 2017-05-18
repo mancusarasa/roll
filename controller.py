@@ -5,13 +5,13 @@ class FirstPlayerController(object):
     '''
     An object that maps the pressed keys to the first player's actions.
     '''
-    def __init__(self, ball):
+    def __init__(self, player):
         '''
         Class constructor.
-        @param ball Ball controlled by the player.
+        @param Player controlling the ball.
         '''
         super(FirstPlayerController, self).__init__()
-        self.ball = ball
+        self.player = player
 
     def take_action(self, keys):
         '''
@@ -20,8 +20,10 @@ class FirstPlayerController(object):
         @return None.
         '''
         if keys[locals.K_LEFT]:
-            self.ball.move_left()
-        elif keys[locals.K_RIGHT]:
-            self.ball.move_right()
-        else:
-            pass
+            self.player.move_left()
+        if keys[locals.K_RIGHT]:
+            self.player.move_right()
+        if keys[locals.K_UP]:
+            self.player.move_up()
+        if keys[locals.K_DOWN]:
+            self.player.move_down()
