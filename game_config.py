@@ -3,7 +3,8 @@ from ConfigParser import ConfigParser
 
 class GameConfig(object):
     '''
-    Encapsulates the config of the game.
+    A Singleton that encapsulates the config of the game.
+    Provides a single get() method to get the value of a key from a section.
     '''
     __instance = None
 

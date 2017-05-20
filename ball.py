@@ -1,4 +1,5 @@
 import pygame
+from visible_objects import VisibleObjects
 
 
 class Ball(pygame.sprite.Sprite):
@@ -18,3 +19,4 @@ class Ball(pygame.sprite.Sprite):
         self.image = pygame.Surface([2*radius, 2*radius], pygame.SRCALPHA, 32)
         pygame.draw.circle(self.image, self.color, (radius, radius), radius)
         self.rect = self.image.get_rect()
+        VisibleObjects().register_object('balls', self)

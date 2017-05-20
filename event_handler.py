@@ -29,6 +29,8 @@ class EventHandler(object):
         '''
         while True:
             time = self.__clock.tick()
+            for controller in self.__controllers:
+                controller.player.update()
             keys = pygame.key.get_pressed()
             for event in pygame.event.get():
                 if event.type == pygame.locals.QUIT:
