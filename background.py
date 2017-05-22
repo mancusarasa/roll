@@ -1,5 +1,7 @@
 import pygame
 
+from visible_objects import VisibleObjects
+
 
 class Background(pygame.sprite.Sprite):
     '''
@@ -11,3 +13,4 @@ class Background(pygame.sprite.Sprite):
         # paint it black
         self.image.fill((0, 0, 0))
         self.rect = self.image.get_rect()
+        VisibleObjects().register_object('background', self)

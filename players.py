@@ -31,28 +31,28 @@ class FirstPlayer(object):
         '''
         self.ball.rect.y += self.__speed_y
 
-    def on_right_button(self):
+    def move_right(self):
         '''
         Callback for the right button.
         @return None
         '''
         self.ball.rect.x += 1
 
-    def on_left_button(self):
+    def move_left(self):
         '''
         Callback for the left button.
         @return None
         '''
         self.ball.rect.x -= 1
 
-    def on_up_button(self):
+    def move_up(self):
         '''
         Callback for the up button.
         @return None
         '''
         self.ball.rect.y -= 1
 
-    def on_down_button(self):
+    def move_down(self):
         '''
         Callback for the down button.
         @return None

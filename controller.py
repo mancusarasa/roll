@@ -20,10 +20,38 @@ class FirstPlayerController(object):
         @return None.
         '''
         if keys[locals.K_LEFT]:
-            self.player.on_left_button()
+            self.on_left_button()
         if keys[locals.K_RIGHT]:
-            self.player.on_right_button()
+            self.on_right_button()
         if keys[locals.K_UP]:
-            self.player.on_up_button()
+            self.on_up_button()
         if keys[locals.K_DOWN]:
-            self.player.on_down_button()
+            self.on_down_button()
+
+    def on_left_button(self):
+        '''
+        Handler for the left button.
+        @return None.
+        '''
+        self.player.move_left()
+
+    def on_right_button(self):
+        '''
+        Handler for the left button.
+        @return None.
+        '''
+        self.player.move_right()
+
+    def on_up_button(self):
+        '''
+        Handler for the left button.
+        @return None.
+        '''
+        self.player.move_up()
+
+    def on_down_button(self):
+        '''
+        Handler for the left button.
+        @return None.
+        '''
+        self.player.move_down()
