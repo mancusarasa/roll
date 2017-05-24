@@ -58,12 +58,13 @@ class Game(object):
         Updates the game's state.
         @return None.
         '''
-        # time-related updates such as collisions,
-        # gravity drops, etc.
-        collision_manager = CollisionManager()
-        collision_manager.handle_collisions()
+        # periodic updates on the players
         for player in self.__players:
             player.update()
+
+        # collisions,
+        collision_manager = CollisionManager()
+        collision_manager.handle_collisions()
 
     def __render(self):
         '''

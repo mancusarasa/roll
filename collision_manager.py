@@ -16,9 +16,9 @@ class CollisionManager(object):
         @return None
         '''
         objects = VisibleObjects()
-        balls = objects.get_group('balls')
+        players = objects.get_group('players')
         floor = objects.get_group('floor')
-        for ball in balls:
-            collided = spritecollideany(ball, floor)
+        for player in players:
+            collided = spritecollideany(player, floor)
             if collided is not None:
-                ball.rect.y -= 1
+                player.rect.y -= 1

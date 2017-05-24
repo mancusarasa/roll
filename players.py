@@ -1,4 +1,5 @@
 from ball import Ball
+from visible_objects import VisibleObjects
 from common import GRAVITY
 
 
@@ -21,6 +22,7 @@ class FirstPlayer(Ball):
         # jump, to avoid jumping twice on the same keystroke. set to
         # True when starting a jump; set to False on collision with something
         self.__midjump = False
+        VisibleObjects().register_object('players', self)
 
     def update(self):
         '''

@@ -42,7 +42,7 @@ class Screen(object):
         self.__screen.blit(self.__floor.image, self.__floor.rect)
         # finally, redraw the players
         visible_objs = VisibleObjects()
-        players = visible_objs.get_group('balls')
+        players = visible_objs.get_group('players')
         for player in players:
             self.__screen.blit(player.image, player.rect)
 
