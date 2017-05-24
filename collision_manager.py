@@ -21,4 +21,4 @@ class CollisionManager(object):
         for player in players:
             collided = spritecollideany(player, floor)
             if collided is not None:
-                player.rect.y -= 1
+                player.on_collision_with_floor()

@@ -48,11 +48,11 @@ class FirstPlayerController(object):
         Handler for the left button.
         @return None.
         '''
-        self.player.move_up()
+        self.player.jump()
 
     def on_down_button(self):
         '''
         Handler for the left button.
         @return None.
         '''
-        self.player.move_down()
+        pass

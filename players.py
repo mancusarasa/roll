@@ -21,7 +21,7 @@ class FirstPlayer(Ball):
         # this boolean indicates if the player is in the middle of a
         # jump, to avoid jumping twice on the same keystroke. set to
         # True when starting a jump; set to False on collision with something
-        self.__midjump = False
+        self.__midair = False
         VisibleObjects().register_object('players', self)
 
     def update(self):
@@ -30,6 +30,8 @@ class FirstPlayer(Ball):
         player's position.
         @return None.
         '''
+        if self.__midair is True:
+            self.__speed_y += GRAVITY
         self.rect.y += self.__speed_y
 
     def move_right(self):
@@ -46,16 +48,19 @@ class FirstPlayer(Ball):
         '''
         self.rect.x -= 1
 
-    def move_up(self):
+    def jump(self):
         '''
-        Callback for the up button.
-        @return None
+        Performs a jump.
+        @return None.
         '''
-        self.rect.y -= 1
+        if self.__midair is False:
+            self.__midair = True
+            self.__speed_y = -10
 
-    def move_down(self):
+    def on_collision_with_floor(self):
         '''
-        Callback for the down button.
-        @return None
+        Callback for the moment when the ball hits the floor.
+        @return None.
         '''
-        self.rect.y += 1
+        self.__speed_y = 0
+        self.__midair = False

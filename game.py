@@ -7,6 +7,7 @@ from clock import Clock
 from players import FirstPlayer
 from controller import FirstPlayerController
 from collision_manager import CollisionManager
+from time import sleep
 
 
 class Game(object):
@@ -41,6 +42,7 @@ class Game(object):
             self.__process_input()
             self.__update()
             self.__render()
+            sleep(.001)
 
     def __process_input(self):
         '''
