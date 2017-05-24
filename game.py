@@ -3,6 +3,7 @@ import pygame
 from screen import Screen
 from game_config import GameConfig
 from event_handler import EventHandler
+from clock import Clock
 from players import FirstPlayer
 
 
@@ -16,6 +17,7 @@ class Game(object):
         self.__screen = Screen(width, height, caption)
         self.__player = FirstPlayer()
         self.__handler = EventHandler(self.__screen, self.__player)
+        self.__clock = Clock()
 
     def Run(self):
         '''
@@ -32,6 +34,7 @@ class Game(object):
         __process_input, __update and __render methods.
         '''
         while True:
+            elapsed_time = self.__clock.tick()
             self.__process_input()
             self.__update()
             self.__render()
