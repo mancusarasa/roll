@@ -1,2 +1,2 @@
 # some useful defines
-GRAVITY = 1.0
+GRAVITY = 0.10
