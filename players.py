@@ -1,6 +1,6 @@
 from ball import Ball
 from visible_objects import VisibleObjects
-from common import GRAVITY
+from common import GRAVITY, INITIAL_JUMP_SPEED
 
 
 class FirstPlayer(Ball):
@@ -13,26 +13,30 @@ class FirstPlayer(Ball):
         @param ball sprite of the ball.
         '''
         super(FirstPlayer, self).__init__(10)
-        # idea: to perform a jump, set this (initial) speed to a
-        # convenient value. then, update the speed with this formula:
-        # self.__speed_y += GRAVITY
-        # self.rect.y += self.__speed_y
         self.__speed_y = GRAVITY
-        # this boolean indicates if the player is in the middle of a
-        # jump, to avoid jumping twice on the same keystroke. set to
-        # True when starting a jump; set to False on collision with something
-        self.__midair = False
+        self.__midair = True
+        # this 'y' is "fake". Since I'm trying to use
+        # increments between 0 and 1 for the vertical movement, this
+        # will keep the value with decimal positional increments
+        self.y = float(self.rect.y)
         VisibleObjects().register_object('players', self)
 
-    def update(self):
+    def update(self, screen_width):
         '''
-        Method called on each iteration of the main event loop, updating the
-        player's position.
+        Method called on each iteration of the main event loop,
+        updating the player's position.
+        @param screen_width screen's width, to correct out of screen positions.
         @return None.
         '''
         if self.__midair is True:
             self.__speed_y += GRAVITY
-        self.rect.y += self.__speed_y
+        self.y += self.__speed_y
+        self.rect.y = self.y
+        # correct the player's position if it leaves the screen.
+        if self.rect.left < 0:
+            self.rect.left = 0
+        elif self.rect.right >= screen_width:
+            self.rect.right = screen_width
 
     def move_right(self):
         '''
@@ -55,12 +59,13 @@ class FirstPlayer(Ball):
         '''
         if self.__midair is False:
             self.__midair = True
-            self.__speed_y = -10
+            self.__speed_y = INITIAL_JUMP_SPEED
 
     def on_collision_with_floor(self):
         '''
         Callback for the moment when the ball hits the floor.
         @return None.
         '''
-        self.__speed_y = 0
+        self.y -= 1  # small correction to place the ball above the floor
+        self.__speed_y = 0.0
         self.__midair = False

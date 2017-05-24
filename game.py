@@ -30,7 +30,6 @@ class Game(object):
         '''
         pygame.init()
         self.__main_loop()
-        print 'game over!'
 
     def __main_loop(self):
         '''
@@ -40,9 +39,10 @@ class Game(object):
         while not game_over:
             elapsed_time = self.__clock.tick()
             self.__process_input()
-            self.__update()
+            self.__update(elapsed_time)
             self.__render()
-            sleep(.001)
+            # sleep a few miliseconds to slow down the game
+            sleep(0.001)
 
     def __process_input(self):
         '''
@@ -55,16 +55,17 @@ class Game(object):
         for controller in self.__controllers:
             controller.handle_keys()
 
-    def __update(self):
+    def __update(self, time):
         '''
         Updates the game's state.
+        @param time elapsed time.
         @return None.
         '''
         # periodic updates on the players
         for player in self.__players:
-            player.update()
+            player.update(self.__screen.width)
 
-        # collisions,
+        # collisions
         collision_manager = CollisionManager()
         collision_manager.handle_collisions()
 
