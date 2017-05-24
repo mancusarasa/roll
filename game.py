@@ -32,8 +32,6 @@ class Game(object):
     def __main_loop(self):
         '''
         The ACTUAL game's main loop.
-        TODO: move the game's functionality to the
-        __process_input, __update and __render methods.
         '''
         while True:
             elapsed_time = self.__clock.tick()
@@ -46,8 +44,9 @@ class Game(object):
         Processes the players' input.
         @return None.
         '''
-        # here go the controllers' actions over the players
+        # events generated (such as pygame.quit)
         self.__handler.handle_events()
+        # controllers' actions over the players
         for controller in self.__controllers:
             controller.handle_keys()
 
@@ -56,17 +55,16 @@ class Game(object):
         Updates the game's state.
         @return None.
         '''
-        # here go the time-related updates such as collisions,
+        # time-related updates such as collisions,
         # gravity drops, etc.
         for player in self.__players:
             player.update()
 
     def __render(self):
         '''
-        Renders the game's changes.
+        Renders the game's changes on the screen.
         @return None.
         '''
-        # here the screen should render the changes made in __update
         # Clear the screen
         self.__screen.clear()
         # Update the objects
