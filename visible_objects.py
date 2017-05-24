@@ -8,6 +8,11 @@ class VisibleObjects(object):
     group_name_string -> pygame.sprite.Group.
     '''
     __instance = None
+    __groups = {
+        'background': Group(),
+        'floor': Group(),
+        'balls': Group()
+    }
 
     def __new__(cls, *args, **kwargs):
         if cls.__instance is None:
@@ -16,11 +21,6 @@ class VisibleObjects(object):
 
     def __init__(self):
         super(VisibleObjects, self).__init__()
-        self.__groups = {
-            'background': Group(),
-            'floor': Group(),
-            'balls': Group()
-        }
 
     def register_object(self, group, visible_obj):
         '''

@@ -1,6 +1,7 @@
 import pygame
 
 from game_config import GameConfig
+from visible_objects import VisibleObjects
 from background import Background
 from floor import Floor
 
@@ -35,7 +36,15 @@ class Screen(object):
         Updates all the visible objects in the screen.
         @return None.
         '''
-        pass
+        # first, redraw the background
+        self.__screen.blit(self.__background.image, self.__background.rect)
+        # then, redraw the floor
+        self.__screen.blit(self.__floor.image, self.__floor.rect)
+        # finally, redraw the players
+        visible_objs = VisibleObjects()
+        players = visible_objs.get_group('balls')
+        for player in players:
+            self.__screen.blit(player.image, player.rect)
 
     def flip(self):
         '''
