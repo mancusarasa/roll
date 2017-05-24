@@ -22,7 +22,6 @@ class Screen(object):
         self.__background = Background(width, height)
         self.__floor = Floor(width, height/4, x=0, y=height*3/4)
         pygame.display.set_caption(caption)
-        self.__visible_objs = [self.__background, self.__floor]
 
     def clear(self):
         '''
@@ -36,15 +35,7 @@ class Screen(object):
         Updates all the visible objects in the screen.
         @return None.
         '''
-        for obj in self.__visible_objs:
-            self.__screen.blit(obj.image, obj.rect)
-
-    def register_visible_object(self, obj):
-        '''
-        Registers a new visible object to be rendered.
-        @param obj new visible object.
-        '''
-        self.__visible_objs.append(obj)
+        pass
 
     def flip(self):
         '''

@@ -17,7 +17,6 @@ class EventHandler(object):
         super(EventHandler, self).__init__()
         self.__clock = pygame.time.Clock()
         self.__screen = screen
-        self.__screen.register_visible_object(player_one.ball)
         self.__controllers = [FirstPlayerController(player_one)]
 
     def main_loop(self):
