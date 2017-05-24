@@ -2,7 +2,7 @@ from ball import Ball
 from common import GRAVITY
 
 
-class FirstPlayer(object):
+class FirstPlayer(Ball):
     '''
     A class that represents the first player.
     '''
@@ -11,8 +11,7 @@ class FirstPlayer(object):
         Constructor.
         @param ball sprite of the ball.
         '''
-        super(FirstPlayer, self).__init__()
-        self.ball = Ball(10)
+        super(FirstPlayer, self).__init__(10)
         # idea: to perform a jump, set this (initial) speed to a
         # convenient value. then, update the speed with this formula:
         # self.__speed_y += GRAVITY
@@ -26,35 +25,35 @@ class FirstPlayer(object):
     def update(self):
         '''
         Method called on each iteration of the main event loop, updating the
-        player's option.
+        player's position.
         @return None.
         '''
-        self.ball.rect.y += self.__speed_y
+        self.rect.y += self.__speed_y
 
     def move_right(self):
         '''
         Callback for the right button.
         @return None
         '''
-        self.ball.rect.x += 1
+        self.rect.x += 1
 
     def move_left(self):
         '''
         Callback for the left button.
         @return None
         '''
-        self.ball.rect.x -= 1
+        self.rect.x -= 1
 
     def move_up(self):
         '''
         Callback for the up button.
         @return None
         '''
-        self.ball.rect.y -= 1
+        self.rect.y -= 1
 
     def move_down(self):
         '''
         Callback for the down button.
         @return None
         '''
-        self.ball.rect.y += 1
+        self.rect.y += 1

@@ -6,6 +6,7 @@ from event_handler import EventHandler
 from clock import Clock
 from players import FirstPlayer
 from controller import FirstPlayerController
+from collision_manager import CollisionManager
 
 
 class Game(object):
@@ -28,12 +29,14 @@ class Game(object):
         '''
         pygame.init()
         self.__main_loop()
+        print 'game over!'
 
     def __main_loop(self):
         '''
         The ACTUAL game's main loop.
         '''
-        while True:
+        game_over = False
+        while not game_over:
             elapsed_time = self.__clock.tick()
             self.__process_input()
             self.__update()
@@ -57,6 +60,8 @@ class Game(object):
         '''
         # time-related updates such as collisions,
         # gravity drops, etc.
+        collision_manager = CollisionManager()
+        collision_manager.handle_collisions()
         for player in self.__players:
             player.update()
 
