@@ -18,7 +18,8 @@ class Screen(object):
         @param caption the screen's caption.
         '''
         super(Screen, self).__init__()
-        # note: self.__screen is a pygame.Surface instance
+        self.width = width
+        self.height = height
         self.__screen = pygame.display.set_mode((width, height))
         self.__background = Background(width, height)
         self.__floor = Floor(width, height/4, x=0, y=height*3/4)
