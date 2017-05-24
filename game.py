@@ -25,11 +25,23 @@ class Game(object):
         pygame.init()
         self.__handler.main_loop()
 
+    def __main_loop(self):
+        '''
+        The ACTUAL game's main loop.
+        TODO: move the game's functionality to the
+        __process_input, __update and __render methods.
+        '''
+        while True:
+            self.__process_input()
+            self.__update()
+            self.__render()
+
     def __process_input(self):
         '''
         Processes the players' input.
         @return None.
         '''
+        # here go the controllers' actions over the players
         pass
 
     def __update(self):
@@ -37,6 +49,8 @@ class Game(object):
         Updates the game's state.
         @return None.
         '''
+        # here go the time-related updates such as collisions,
+        # gravity drops, etc.
         pass
 
     def __render(self):
@@ -44,6 +58,7 @@ class Game(object):
         Renders the game's changes.
         @return None.
         '''
+        # here the screen should render the changes made in __update
         pass
 
     def __get_screen_config(self):
