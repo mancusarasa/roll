@@ -19,7 +19,7 @@ class Game(object):
 
     def Run(self):
         '''
-        The main loop game.
+        The game's main loop.
         @return None
         '''
         pygame.init()
