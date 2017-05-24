@@ -19,11 +19,32 @@ class Game(object):
 
     def Run(self):
         '''
-        Runs the Game.
+        The main loop game.
         @return None
         '''
         pygame.init()
         self.__handler.main_loop()
+
+    def __process_input(self):
+        '''
+        Processes the players' input.
+        @return None.
+        '''
+        pass
+
+    def __update(self):
+        '''
+        Updates the game's state.
+        @return None.
+        '''
+        pass
+
+    def __render(self):
+        '''
+        Renders the game's changes.
+        @return None.
+        '''
+        pass
 
     def __get_screen_config(self):
         '''
