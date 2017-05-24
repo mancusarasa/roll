@@ -10,6 +10,7 @@ class Clock(object):
         '''
         Class constructor.
         '''
+        super(Clock, self).__init__()
         self.__clock = pygame.time.Clock()
 
     def tick(self):
