@@ -1,3 +1,4 @@
+import pygame
 from pygame import locals
 
 
@@ -13,12 +14,12 @@ class FirstPlayerController(object):
         super(FirstPlayerController, self).__init__()
         self.player = player
 
-    def take_action(self, keys):
+    def handle_keys(self):
         '''
         Takes the appropriate actions based on the keys pressed by the player.
-        @param keys pressed keys.
         @return None.
         '''
+        keys = pygame.key.get_pressed()
         if keys[locals.K_LEFT]:
             self.on_left_button()
         if keys[locals.K_RIGHT]:

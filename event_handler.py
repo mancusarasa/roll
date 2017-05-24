@@ -8,38 +8,19 @@ class EventHandler(object):
     '''
     Handles all the events of the game.
     '''
-    def __init__(self, screen, player_one):
+    def __init__(self):
         '''
         Class constructor.
         @param screen.
         @param player_one first player.
         '''
         super(EventHandler, self).__init__()
-        self.__clock = pygame.time.Clock()
-        self.__screen = screen
-        self.__controllers = [FirstPlayerController(player_one)]
 
-    def main_loop(self):
+    def handle_events(self):
         '''
-        Handles the new events until the game is quit, updating
-        the changes in the screen.
-        @param screen where the changes will be rendered.
+        Handles the new events until the game is quit.
         @return None.
         '''
-        while True:
-            time = self.__clock.tick()
-            for controller in self.__controllers:
-                controller.player.update()
-            keys = pygame.key.get_pressed()
-            for event in pygame.event.get():
-                if event.type == pygame.locals.QUIT:
-                    return
-            for controller in self.__controllers:
-                controller.take_action(keys)
-
-            # Clear the screen
-            self.__screen.clear()
-            # Update the objects
-            self.__screen.update_objects()
-            # Show the updated objects
-            self.__screen.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.locals.QUIT:
+                raise RuntimeError("quit!")

@@ -5,6 +5,7 @@ from game_config import GameConfig
 from event_handler import EventHandler
 from clock import Clock
 from players import FirstPlayer
+from controller import FirstPlayerController
 
 
 class Game(object):
@@ -15,8 +16,9 @@ class Game(object):
         super(Game, self).__init__()
         width, height, caption = self.__get_screen_config()
         self.__screen = Screen(width, height, caption)
-        self.__player = FirstPlayer()
-        self.__handler = EventHandler(self.__screen, self.__player)
+        self.__players = [FirstPlayer()]
+        self.__controllers = [FirstPlayerController(self.__players[0])]
+        self.__handler = EventHandler()
         self.__clock = Clock()
 
     def Run(self):
@@ -25,7 +27,7 @@ class Game(object):
         @return None
         '''
         pygame.init()
-        self.__handler.main_loop()
+        self.__main_loop()
 
     def __main_loop(self):
         '''
@@ -45,7 +47,9 @@ class Game(object):
         @return None.
         '''
         # here go the controllers' actions over the players
-        pass
+        self.__handler.handle_events()
+        for controller in self.__controllers:
+            controller.handle_keys()
 
     def __update(self):
         '''
@@ -54,7 +58,8 @@ class Game(object):
         '''
         # here go the time-related updates such as collisions,
         # gravity drops, etc.
-        pass
+        for player in self.__players:
+            player.update()
 
     def __render(self):
         '''
@@ -62,7 +67,12 @@ class Game(object):
         @return None.
         '''
         # here the screen should render the changes made in __update
-        pass
+        # Clear the screen
+        self.__screen.clear()
+        # Update the objects
+        self.__screen.update_objects()
+        # Show the updated objects
+        self.__screen.flip()
 
     def __get_screen_config(self):
         '''
