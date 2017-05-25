@@ -66,6 +66,22 @@ class FirstPlayer(Ball):
         Callback for the moment when the ball hits the floor.
         @return None.
         '''
-        self.y -= 1  # small correction to place the ball above the floor
         self.__speed_y = 0.0
         self.__midair = False
+
+    def on_collision_with_beam(self):
+        '''
+        Callback for the moment when the ball hits a beam.
+        @return None.
+        '''
+        self.__speed_y = 0.0
+        self.__midair = False
+
+    def resume_drop(self):
+        '''
+        Resumes the gravity drop.
+        @return None.
+        '''
+        if self.__midair is False:
+            self.__midair = True
+            self.__speed_y = GRAVITY
