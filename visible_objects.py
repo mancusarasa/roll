@@ -11,7 +11,8 @@ class VisibleObjects(object):
     __groups = {
         'background': Group(),
         'floor': Group(),
-        'players': Group()
+        'players': Group(),
+        'beams': Group()
     }
 
     def __new__(cls, *args, **kwargs):
