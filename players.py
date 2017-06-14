@@ -69,13 +69,16 @@ class FirstPlayer(Ball):
         self.__speed_y = 0.0
         self.__midair = False
 
-    def on_collision_with_beam(self):
+    def on_collision_with_beam(self, beam):
         '''
         Callback for the moment when the ball hits a beam.
         @return None.
         '''
-        self.__speed_y = 0.0
-        self.__midair = False
+        if beam.rect.y < self.y:  # if the collision was from below
+            self.__speed_y = 0.0
+        else:
+            self.__speed_y = 0.0
+            self.__midair = False
 
     def resume_drop(self):
         '''

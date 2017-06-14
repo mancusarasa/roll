@@ -47,5 +47,5 @@ class CollisionManager(object):
         beams = self.__visible_objs.get_group('beams')
         beam = spritecollideany(player, beams)
         if beam is not None:
-            player.on_collision_with_beam()
+            player.on_collision_with_beam(beam)
         return beam is not None
