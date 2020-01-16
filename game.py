@@ -7,6 +7,7 @@ from clock import Clock
 from players import FirstPlayer
 from controller import FirstPlayerController
 from collision_manager import CollisionManager
+from beam_collection import BeamCollection
 from time import sleep
 
 
@@ -21,6 +22,7 @@ class Game(object):
         self.__players = [FirstPlayer()]
         self.__controllers = [FirstPlayerController(self.__players[0])]
         self.__handler = EventHandler()
+        self.__beamCollection = BeamCollection()
         self.__clock = Clock()
 
     def Run(self):
