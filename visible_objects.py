@@ -32,7 +32,7 @@ class VisibleObjects(object):
         '''
         try:
             self.__groups[group].add(visible_obj)
-            print 'Registered new {} object!'.format(group)
+            print('Registered new {} object!'.format(group))
         except KeyError as e:
             raise RuntimeError('Group {} does not exist'.format(str(e)))
 
