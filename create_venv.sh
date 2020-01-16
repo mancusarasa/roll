@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-mkdir venv
-virtualenv -p /usr/bin/python3 venv/
+PYTHON_PATH=$(which python3)
+VENV_DIR=venv
 
-# . ./venv/bin/activate && pip3 install -r requirements.txt
+mkdir $VENV_DIR
+virtualenv -p $PYTHON_PATH $VENV_DIR
+. ./venv/bin/activate
+pip3 install -r requirements.txt
