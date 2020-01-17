@@ -65,7 +65,10 @@ class Game(object):
         '''
         # periodic updates on the players
         for player in self.__players:
-            player.update(self.__screen.width)
+            player.update()
+
+        # periodic updates on the beams
+        self.__beamCollection.update()
 
         # collisions
         collision_manager = CollisionManager()

@@ -12,6 +12,7 @@ class BeamCollection(object):
         Constructor
         '''
         super(BeamCollection, self).__init__()
+        self.beams = []
         config = GameConfig()
         width = int(config.get('beams', 'width'))
         height = int(config.get('beams', 'height'))
@@ -21,5 +22,8 @@ class BeamCollection(object):
         for i in range(beams_count):
             x_offset = randint(0, screen_width)
             y_offset = i*(screen_height/beams_count)
-            b = Beam(width, height, x_offset, y_offset)
-        
+            self.beams.append(Beam(width, height, x_offset, y_offset))
+
+    def update(self):
+        for beam in self.beams:
+            beam.update()

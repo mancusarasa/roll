@@ -1,4 +1,5 @@
 from visible_objects import VisibleObjects
+from game_config import GameConfig
 
 from pygame import Surface
 from pygame.sprite import Sprite
@@ -24,3 +25,9 @@ class Beam(Sprite):
         self.rect.x = x
         self.rect.y = y
         VisibleObjects().register_object('beams', self)
+
+    def update(self):
+        config = GameConfig()
+        self.rect.y -= 1
+        if self.rect.y <= 0:
+            self.rect.y = int(config.get('screen', 'height'))
