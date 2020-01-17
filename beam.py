@@ -16,6 +16,8 @@ class Beam(Sprite):
         '''
         super(Beam, self).__init__()
         self.color = (255, 255, 255)
+        self.width = width
+        self.height = height
         self.image = Surface([width, height])
         self.image.fill(self.color)
         self.rect = self.image.get_rect()
