@@ -1,5 +1,6 @@
 from ball import Ball
 from visible_objects import VisibleObjects
+from game_config import GameConfig
 from common import GRAVITY, INITIAL_JUMP_SPEED
 
 
@@ -21,13 +22,15 @@ class FirstPlayer(Ball):
         self.y = float(self.rect.y)
         VisibleObjects().register_object('players', self)
 
-    def update(self, screen_width):
+    def update(self):
         '''
         Method called on each iteration of the main event loop,
         updating the player's position.
         @param screen_width screen's width, to correct out of screen positions.
         @return None.
         '''
+        config = GameConfig()
+        screen_width = int(config.get('screen', 'width'))
         if self.__midair is True:
             self.__speed_y += GRAVITY
         self.y += self.__speed_y
