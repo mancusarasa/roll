@@ -76,6 +76,10 @@ class FirstPlayer(Ball):
         '''
         if beam.rect.y < self.y:  # if the collision was from below
             self.__speed_y = 0.0
+            # also force the new position under the beam,
+            # just in case
+            self.y = beam.rect.y + beam.height
+
         else:
             self.__speed_y = 0.0
             self.__midair = False
