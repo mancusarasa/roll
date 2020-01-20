@@ -28,6 +28,6 @@ class Beam(Sprite):
 
     def update(self):
         config = GameConfig()
-        self.rect.y -= 1
+        self.rect.y -= int(config.get('beams', 'raise_speed'))
         if self.rect.y <= 0:
             self.rect.y = int(config.get('screen', 'height'))
