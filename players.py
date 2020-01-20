@@ -86,6 +86,9 @@ class FirstPlayer(Ball):
         else:
             self.__speed_y = 0.0
             self.__midair = False
+            # also force the new position over the beam,
+            # just in case
+            self.y = beam.rect.y - beam.height
 
     def resume_drop(self):
         '''
