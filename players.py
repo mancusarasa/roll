@@ -20,6 +20,9 @@ class FirstPlayer(Ball):
         # increments between 0 and 1 for the vertical movement, this
         # will keep the value with decimal positional increments
         self.y = float(self.rect.y)
+        config = GameConfig()
+        self.__screen_width = int(config.get('screen', 'width'))
+        self.__s_speed = int(config.get('player', 'sideways_speed'))
         VisibleObjects().register_object('players', self)
 
     def update(self):
@@ -46,14 +49,14 @@ class FirstPlayer(Ball):
         Callback for the right button.
         @return None
         '''
-        self.rect.x += 1
+        self.rect.x += self.__s_speed
 
     def move_left(self):
         '''
         Callback for the left button.
         @return None
         '''
-        self.rect.x -= 1
+        self.rect.x -= self.__s_speed
 
     def jump(self):
         '''
