@@ -24,6 +24,7 @@ class Game(object):
         self.__handler = EventHandler()
         self.__beamCollection = BeamCollection()
         self.__clock = Clock()
+        self.__game_over = False
 
     def Run(self):
         '''
@@ -33,12 +34,18 @@ class Game(object):
         pygame.init()
         self.__main_loop()
 
+    def end_game(self):
+        '''
+        Indicates the game ended
+        @return None
+        '''
+        self.__game_over = True
+
     def __main_loop(self):
         '''
         The ACTUAL game's main loop.
         '''
-        game_over = False
-        while not game_over:
+        while not self.__game_over:
             elapsed_time = self.__clock.tick()
             self.__process_input()
             self.__update(elapsed_time)
