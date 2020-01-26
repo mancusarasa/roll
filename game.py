@@ -19,7 +19,7 @@ class Game(object):
         super(Game, self).__init__()
         width, height, caption = self.__get_screen_config()
         self.__screen = Screen(width, height, caption)
-        self.__players = [FirstPlayer()]
+        self.__players = [FirstPlayer(self)]
         self.__controllers = [FirstPlayerController(self.__players[0])]
         self.__handler = EventHandler()
         self.__beamCollection = BeamCollection()

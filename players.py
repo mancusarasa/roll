@@ -8,12 +8,13 @@ class FirstPlayer(Ball):
     '''
     A class that represents the first player.
     '''
-    def __init__(self):
+    def __init__(self, game):
         '''
         Constructor.
         @param ball sprite of the ball.
         '''
         super(FirstPlayer, self).__init__(10)
+        self.game = game
         self.__speed_y = GRAVITY
         self.__midair = True
         # this 'y' is "fake". Since I'm trying to use
@@ -43,6 +44,11 @@ class FirstPlayer(Ball):
             self.rect.left = 0
         elif self.rect.right >= screen_width:
             self.rect.right = screen_width
+
+        screen_height = int(config.get('screen', 'height'))
+        if self.rect.y >= screen_height:
+            self.game.end_game()
+
 
     def move_right(self):
         '''
